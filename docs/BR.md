@@ -1,11 +1,11 @@
 ---
 title: Baseline Requirements for the Issuance and Management of Publicly-Trusted TLS Server Certificates
 
-subtitle: Version 2.0.8
+subtitle: Version 2.0.X
 author:
   - CA/Browser Forum
 
-date: 2-October-2024  
+date: TBD  
 
 
 
@@ -145,6 +145,7 @@ The following Certificate Policy identifiers are reserved for use by CAs to asse
 | 2.0.6 | SC75 | Pre-sign linting | 28-June-2024 | 6-August-2024 |
 | 2.0.7 | SC67 | Require Multi-Perspective Issuance Corroboration | 2-August-2024 | 6-September-2024 |
 | 2.0.8 | SC77 | Update WebTrust Audit name in Section 8.4 and References | 2-September-2024 | 2-October-2024 |
+| 2.0.X | TBD  | Require disclosure of automation support | TBD | TBD |
 
 \* Effective Date and Additionally Relevant Compliance Date(s)
 
@@ -201,7 +202,7 @@ The following Certificate Policy identifiers are reserved for use by CAs to asse
 | 2025-03-15     | 4.3.1.2                   | The CA SHALL implement a Linting process to test the technical conformity of the to-be-issued Certificate with these Requirements.                                                                                                                                                                                                                                                                                                                       |
 | 2025-03-15     | 8.7                       | The CA SHOULD use a Linting process to test the technical accuracy of already issued Certificates against the sample set chosen for Self-Audits.                                                                                                                                                                                                                                                                                                         |
 | 2025-03-15     | 3.2.2.9                   | CAs MUST corroborate the results of domain validation and CAA checks from multiple Network Perspectives where specified. |
-
+| TBD            | 4.13                      | CAs MUST document their support for ACME or equivalent automation in CPS. |
 
 ## 1.3 PKI Participants
 
