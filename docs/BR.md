@@ -4172,7 +4172,7 @@ This appendix defines permissible verification procedures for including one or m
 
 This Appendix provides guidance for CAs that use AI Systems in performing the information verification activities described in [Section 3.2](#32-initial-identity-validation), [Section 4.1](#41-certificate-application), and [Section 4.2](#42-certificate-application-processing). It is intended as a common reference point for CAs, auditors, and Application Software Suppliers while practice in this area matures.
 
-*This Appendix is informative. It does not add to, interpret, or modify any requirement of these Requirements. Where this Appendix and the normative text of these Requirements differ, the normative text controls. As informative text, this Appendix deliberately avoids the capitalized key words described in [Section 1.6.4](#164-conventions); lowercase "should", "may", and "can" in this Appendix express guidance and expectation, not conformance requirements. Capitalized terms carry the meanings given in [Section 1.6.1](#161-definitions).*
+*This Appendix is informative. It does not add to, interpret, or modify any requirement of these Requirements. Where this Appendix and the normative text of these Requirements differ, the normative text controls. As informative text, this Appendix deliberately avoids the capitalized key words described in [Section 1.6.4](#164-conventions); lowercase "should", "may", and "can" in this Appendix express guidance, not conformance requirements. Capitalized terms carry the meanings given in [Section 1.6.1](#161-definitions).*
 
 The normative obligations relevant to AI Systems are limited to those stated in the body of these Requirements, including the disclosure obligation in [Section 2.2](#22-publication-of-information). Nothing in this Appendix authorizes, prohibits, or conditions any particular use of an AI System. A CA remains responsible for the accuracy of all information verification performed in whole or in part by an AI System, to the same extent as if that verification had been performed by the CA's own personnel.
 
@@ -4180,7 +4180,7 @@ The normative obligations relevant to AI Systems are limited to those stated in 
 
 ### C.2.1. Definition
 
-An AI System, as defined in [Section 1.6.1](#161-definitions), performs a function by means of a trained model rather than exclusively by explicitly programmed rules, such that its behavior for a given input cannot be exhaustively specified or tested in advance. Deterministic automation, however sophisticated, is outside the definition. A DNS lookup, an ACME implementation, a CAA processing engine, a certificate linter, and a rules-based risk scoring system applying fixed criteria each perform the same check in the same way every time, can be tested exhaustively against their specification, and fail in legible ways. These systems are longstanding, are in many cases effectively required by these Requirements, and are not the subject of this Appendix. The following examples illustrate each side of the boundary.
+An AI System, as defined in [Section 1.6.1](#161-definitions), performs a function by means of a trained model rather than exclusively by explicitly programmed rules, such that its behavior for a given input cannot be exhaustively specified or tested in advance. Deterministic automation, however sophisticated, is outside the definition. A DNS lookup, an ACME implementation, a CAA processing engine, a certificate linter, and a rules-based risk scoring system applying fixed criteria each perform the same check in the same way every time, can be tested exhaustively against their specification, and fail in legible ways. These systems are longstanding, are in many cases effectively required by these Requirements, and are not the subject of this Appendix. The following examples illustrate the difference:
 
 Not AI Systems:
 
@@ -4199,15 +4199,15 @@ AI Systems:
 
 ### C.2.2. Edge cases
 
-Some configurations require closer reasoning. The organizing principle is that classification follows what the CA relies upon, not what the tool is called.
+Some configurations require closer reasoning. Classification is based on what the CA relies upon, not what the tool is called:
 
-- **Verified transcription**: Where a model-based component produces an intermediate rendering (a transcription, an extraction, a translation) and a Validation Specialist verifies that rendering in full against the authoritative source before reliance, the component is operating as a transcription step and the arrangement sits outside the concerns of this Appendix. The moment verification becomes partial or sampled, the CA is relying on the model, and the guidance in Sections C.4 through C.7 applies.
+1. **Verified transcription**: Where a model-based component produces an intermediate rendering (a transcription, an extraction, a translation) and a Validation Specialist verifies that rendering in full against the authoritative source before reliance, the component is operating as a transcription step and the arrangement sits outside the concerns of this Appendix. The moment verification becomes partial or sampled, the CA is relying on the model, and the guidance in Sections C.4 through C.7 applies.
 
-- **Models embedded in vendor products**: A data aggregator, a registry interface, or a source relied upon under these Requirements or under the EV Guidelines may use models internally without disclosing that fact. The CA's obligations attach at the point of reliance: if the CA relies on the vendor's output as evidence, the considerations in [Section C.5](#c5-evidence-provenance-and-data-sources) (provenance) and [Section C.9](#c9-third-parties-and-externally-hosted-models) (third parties) apply regardless of the vendor's internal architecture. A CA is not expected to audit the internal implementation of every data source, but it should understand, through its vendor management process, whether the outputs it treats as evidence are records of an authoritative source or model-generated derivations of one.
+1. **Models embedded in vendor products**: A data aggregator, a registry interface, or a source relied upon under these Requirements or under the EV Guidelines may use models internally without disclosing that fact. The CA's obligations attach at the point of reliance: if the CA relies on the vendor's output as evidence, the considerations in [Section C.5](#c5-evidence-provenance-and-data-sources) (provenance) and [Section C.9](#c9-third-parties-and-externally-hosted-models) (third parties) apply regardless of the vendor's internal architecture. A CA is not expected to audit the internal implementation of every data source, but it should understand, through its vendor management process, whether the outputs it treats as evidence are records of an authoritative source or model-generated derivations of one.
 
-- **Rules engines with learned parameters**: A scoring system whose criteria were originally derived using statistical or machine learning techniques, but which now applies those criteria as fixed, inspectable rules that do not change except through the CA's own change management, behaves as deterministic automation. A system whose parameters continue to update through learning in production is an AI System.
+1. **Rules engines with learned parameters**: A scoring system whose criteria were originally derived using statistical or machine learning techniques, but which now applies those criteria as fixed, inspectable rules that do not change except through the CA's own change management, behaves as deterministic automation. A system whose parameters continue to update through learning in production is an AI System.
 
-- **Agentic compositions**: Where a system chains multiple capabilities, it should be classified and governed according to the most consequential role it performs in the workflow (see [Section C.3](#c3-roles-of-ai-systems-in-validation-workflows)). A pipeline that gathers, extracts, corroborates, and then recommends approval should be treated under the decision support role at minimum, even though its individual components perform lower-risk roles.
+1. **Agentic compositions**: Where a system chains multiple capabilities, it should be classified and governed according to the most consequential role it performs in the workflow (see [Section C.3](#c3-roles-of-ai-systems-in-validation-workflows)). A pipeline that gathers, extracts, corroborates, and then recommends approval should be treated under the decision support role at minimum, even though its individual components perform lower-risk roles.
 
 ## C.3. Roles of AI Systems in Validation Workflows
 
@@ -4231,11 +4231,11 @@ A single deployment may span several roles. The governing considerations are tho
 
 ### C.4.1. The reliance test
 
-The central question for any AI System in validation is what the CA relies upon it to do. This Appendix adopts a reliance framing consistent with *AICPA Q&A Section 9561*, which WebTrust practitioners can be expected to consult.
+The central question for any AI System in validation is what the CA relies upon it to do:
 
-An AI System is operating as an **efficiency aid** when a Validation Specialist fully reviews and, where necessary, corrects its output before any reliance is placed on it, and when the Validation Specialist could re-perform the task without the AI System, using sources outside it. In that configuration the human control is the control; the AI System accelerates work the human remains fully accountable for and capable of.
+- An AI System is operating as an **efficiency aid** when a Validation Specialist fully reviews and, where necessary, corrects its output before any reliance is placed on it, and when the Validation Specialist could re-perform the task without the AI System, using sources outside it. In that configuration the human control is the control; the AI System accelerates work the human remains fully accountable for and capable of.
 
-An AI System becomes a **control dependency** when any of the following holds: a human reviews only a sample of its output; the completeness of what the system identified cannot be verified by the human; or the system's operation itself introduces or mitigates risk to the validation objective. Once an AI System is a control dependency, the CA should expect it to be within the scope of its audits, should govern it under Sections C.6 through C.10, and should be able to demonstrate why reliance on it is justified.
+- An AI System becomes a **control dependency** when any of the following holds: a human reviews only a sample of its output; the completeness of what the system identified cannot be verified by the human; or the system's operation itself introduces or mitigates risk to the validation objective. Once an AI System is a control dependency, the CA should expect it to be within the scope of its audits, should govern it under Sections C.6 through C.10, and should be able to demonstrate why reliance on it is justified.
 
 The transition between these states is gradual in practice and should be watched deliberately. A deployment introduced as an efficiency aid, with full review, tends to drift toward sampled review as confidence grows and volume pressure increases. That drift is a control change and should pass through the CA's change management as such, not occur as an unmanaged erosion of review discipline.
 
@@ -4268,7 +4268,7 @@ Where these Requirements assign a duty to a Validation Specialist or to personne
 
 ### C.5.1. AI Output is not evidence
 
-The foundational principle of this section is that AI Output is not itself evidence. An AI System is a processing step applied to evidence, not a source of it. Every element of Subject Identity Information included in a Certificate should trace to an underlying authoritative artifact: the registry record, the government filing, the Reliable Data Source record, the attestation, or the verified communication on which the determination actually rests.
+AI Output is not itself evidence. An AI System is a processing step applied to evidence, not a source of it. Every element of Subject Identity Information included in a Certificate should trace to an underlying authoritative artifact: the registry record, the government filing, the Reliable Data Source record, the attestation, or the verified communication on which the determination actually rests.
 
 This principle holds regardless of how capable the model is. A model's recall of facts about an entity, however accurate it may usually be, is a statistical reconstruction, not a record. It does not satisfy the concept of a Reliable Data Source: a model's output is created at the moment of the query, for the purpose of the query. A CA that finds itself unable to point to an artifact behind a validated data element, other than the AI Output asserting it, has not verified that element.
 
@@ -4321,7 +4321,7 @@ Testing should be designed and evaluated by personnel with the competence descri
 
 ### C.7.2. Monitoring in production
 
-A CA should monitor, at minimum: error and override rates from human review (see [Section C.4](#c4-reliance-and-human-oversight)); drift indicators (meaning changes over time in the distribution of inputs or in the system's behavior on stable benchmark inputs); and anomalies suggesting targeted probing of the system by adversaries. Monitoring thresholds should connect to defined responses: increased review sampling, suspension of the AI System's role, or reversion to the manual process.
+A CA should monitor at minimum: error and override rates from human review (see [Section C.4](#c4-reliance-and-human-oversight)); drift indicators (meaning changes over time in the distribution of inputs or in the system's behavior on stable benchmark inputs); and anomalies which may suggest targeted probing of the system by adversaries. Monitoring thresholds should connect to defined responses: increased review sampling, suspension of the AI System's role, or reversion to the manual process.
 
 Data-related risks apply directly: training data that is insufficient, outdated, or unrepresentative of the CA's workload; data poisoning; and drift in retrieval corpus that silently changes what the system reads.
 
@@ -4350,9 +4350,9 @@ Mitigations include: architectural separation between instructions and data, so 
 
 ### C.8.3. System separation and access
 
-An AI System that processes untrusted validation inputs should be separated from systems capable of changing certificate data or issuance state, consistent with the zoning concepts of the Network and Certificate System Security Requirements. The AI System's outputs should enter issuance workflows through controlled interfaces that enforce the structural validation described above, rather than through direct write access. Where an AI System is given the ability to take actions (retrieve documents, update records, advance a workflow), the action set should be minimal, enumerated, and logged.
+An AI System that processes untrusted validation inputs should be separated from systems capable of changing certificate data or issuance state, consistent with the zoning concepts of the Network and Certificate System Security Requirements. The AI System's outputs should enter issuance workflows through controlled interfaces that enforce the structural validation described above, rather than through direct write access. Where an AI System is given the ability to take actions (retrieve documents, update records, advance a workflow), the action set should be minimal and logged.
 
-Access to the AI System itself, including its prompts, configuration, retrieval corpora, and any fine-tuning data, should be controlled as access to a certificate system component: these artifacts determine validation behavior, and their unauthorized modification is an integrity event. Training and continuous-learning data should be secured against tampering by both insiders and external actors.
+Access to the AI System itself, including its prompts, configuration and retrieval corpus should be controlled: these artifacts determine validation behavior, and their unauthorized modification is an integrity event. Training and continuous-learning data should be secured against tampering by both insiders and external actors.
 
 ## C.9. Third Parties and Externally Hosted Models
 
@@ -4387,11 +4387,11 @@ Effective governance begins with knowing where AI is actually in use. A CA shoul
 
 ### C.10.2. Accountability
 
-Responsibility for the use of AI Systems in validation should be assigned to a specific role or body, with authority over approval of new uses, the policy framework below, and the monitoring outputs of [Section C.7](#c7-testing-monitoring-and-change-management). Diffuse responsibility is a known failure pattern for cross-cutting technologies: when AI governance belongs to everyone, drift, shadow deployment, and unowned incidents follow.
+Responsibility for the use of AI Systems in validation should be assigned to a specific role or body, with authority over approval of new uses, the policy framework below, and the monitoring outputs of [Section C.7](#c7-testing-monitoring-and-change-management). Diffuse responsibility is a known failure pattern for cross-cutting technologies like AI.
 
 ### C.10.3. Competence
 
-Those who deploy, oversee, and review AI Systems should collectively hold the competence to do so: an understanding of the core concepts and failure modes described in this Appendix (non-determinism, hallucination, drift, bias including automation bias, injection), of data quality and provenance, of the governance frameworks applicable to the CA, and of the evolving regulatory environment. Validation Specialists whose duties involve reviewing AI Output should receive training specific to that review (see [Section C.4.5](#c45-the-validation-specialist)).
+Those who deploy and oversee AI Systems should collectively hold the competence to do so: an understanding of the core concepts and failure modes described in this Appendix (non-determinism, hallucination, drift, bias including automation bias, injection), of data quality and provenance, of the governance frameworks applicable to the CA, and of the evolving regulatory environment. Validation Specialists whose duties involve reviewing AI Output should receive training specific to that review (see [Section C.4.5](#c45-the-validation-specialist)).
 
 ### C.10.4. Policy framework
 
@@ -4405,7 +4405,7 @@ The disclosure made under [Section 2.2](#22-publication-of-information) gives au
 
 ### C.11.2. Incident reporting
 
-Where an AI System contributed to a misissuance or other reportable failure, the community's established expectations for incident reports apply. The root cause analysis should identify the AI System, the inputs and configuration involved, what human review was performed and why it did not catch the failure, and whether a model change, data drift, or an adversarial input was a factor (see [Section C.7](#c7-testing-monitoring-and-change-management) and [Section C.8](#c8-security-considerations)). Remediation should address the control gap, not only the individual error: an AI-attributable failure in one validation is evidence about every validation performed under the same configuration, and the affected-scope analysis should use the change log of [Section C.7.3](#c73-change-management-for-models-outside-the-cas-control) to bound the exposure window.
+Where an AI System contributed to a misissuance or other reportable failure, the community's established expectations for incident reports apply. The root cause analysis should identify the AI System, a summary of the inputs and configuration involved, what human review was performed and why it did not catch the failure, and whether a model change, data drift, or an adversarial input was a factor (see [Section C.7](#c7-testing-monitoring-and-change-management) and [Section C.8](#c8-security-considerations)). Remediation should address the control gap, not only the individual error: an AI-attributable failure in one validation is evidence about every validation performed under the same configuration, and the affected-scope analysis should use the change log of [Section C.7.3](#c73-change-management-for-models-outside-the-cas-control) to bound the exposure window.
 
 ### C.11.3. Self-audit
 
