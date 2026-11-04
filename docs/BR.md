@@ -4368,9 +4368,9 @@ CAs should note that these Requirements already prohibit delegation of certain f
 
 Whether or not a provider is a Delegated Third Party, a CA relying on an external AI service in validation should extend its vendor management program to cover, at minimum:
 
-- contractual terms governing the service's use in the CA's context, including model change notification (see [Section C.7.3](#c73-change-management-for-models-outside-the-cas-control)), availability commitments consistent with the CA's issuance obligations, and incident notification;
+- contractual terms governing the service's use in the CA's context, including model change notification (see [Section C.7.3](#c73-change-management-for-models-outside-the-cas-control)) and incident notification;
 - data handling: where Applicant data and evidence are processed and stored, who can access them, and whether the CA's data may be used to train or improve the provider's models, which a CA should generally preclude for validation data;
-- assurance reporting: SOC 2 or equivalent reports, reviewed with attention to how the provider's report treats its AI components, noting that under AICPA Q&A Section 9561, AI use at a subservice organization is presumptively relevant and complementary user entity controls may be stated that the CA is assumed to operate; and
+- assurance reporting: SOC 2 or equivalent reports, reviewed with attention to how the provider's report treats its AI components; and
 - the provider's own supply chain, including foundation models the service depends on, to the extent the provider can meaningfully attest to it.
 
 The CA's risk assessment should identify where a vendor's AI affects the CA's own validation objectives, including vendors not procured as AI products but embedding models in relevant functions (see [Section C.2.2](#c22-edge-cases)).
