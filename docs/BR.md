@@ -4180,7 +4180,7 @@ This Appendix provides guidance for CAs that use AI Systems in performing the in
 
 ### C.2.1. Definition
 
-An AI System, as defined in [Section 1.6.1](#161-definitions), performs a function by means of a trained model rather than exclusively by explicitly programmed rules, such that its behavior for a given input cannot be exhaustively specified or tested in advance. Deterministic automation, however sophisticated, is outside the definition. A DNS lookup, an ACME implementation, a CAA processing engine, a certificate linter, and a rules-based risk scoring system applying fixed criteria each perform the same check in the same way every time, can be tested exhaustively against their specification, and fail in legible ways. These systems are longstanding, are in many cases effectively required by these Requirements, and are not the subject of this Appendix. The following examples illustrate the difference:
+An AI System, as defined in [Section 1.6.1](#161-definitions), performs a function by means of a trained model rather than exclusively by explicitly programmed rules, such that its behavior for a given input cannot be exhaustively specified or tested in advance. Deterministic automation is outside the definition. These systems perform the same check in the same way every time, can be tested exhaustively against their specification, and fail in predictable patterns. These systems are longstanding, are in many cases effectively required by these Requirements, and are not the subject of this Appendix. The following examples illustrate the difference:
 
 Not AI Systems:
 
@@ -4309,7 +4309,7 @@ Non-determinism is a reason for this record, not an argument against it. Because
 
 ### C.6.3. Retention and access
 
-These records are documentation supporting the verification of information and should be retained consistent with [Section 5.5.2](#552-retention-period-for-archive). They may contain personal data and Applicant confidential material, and prompts and configuration may reveal details of the CA's detection logic; access and disclosure should be handled accordingly, including in the incident reporting context, where the community's need to understand a failure can usually be met without publishing the CA's full prompt set.
+These records are documentation supporting the verification of information and should be retained consistent with [Section 5.5.2](#552-retention-period-for-archive). They may contain personal data and Applicant confidential material, and prompts and configuration may reveal details of the CA's detection logic; access and disclosure should be handled accordingly. In the incident reporting context, the community's need to understand a failure can usually be met without publishing the CA's full prompt set.
 
 ## C.7. Testing, Monitoring, and Change Management
 
@@ -4350,7 +4350,7 @@ Mitigations include: architectural separation between instructions and data, so 
 
 ### C.8.3. System separation and access
 
-An AI System that processes untrusted validation inputs should be separated from systems capable of changing certificate data or issuance state, consistent with the zoning concepts of the Network and Certificate System Security Requirements. The AI System's outputs should enter issuance workflows through controlled interfaces that enforce the structural validation described above, rather than through direct write access. Where an AI System is given the ability to take actions (retrieve documents, update records, advance a workflow), the action set should be minimal and logged.
+An AI System that processes untrusted validation inputs should be separated from systems capable of changing certificate data or issuance state, consistent with the zoning concepts of the Network and Certificate System Security Requirements. The AI System's outputs should enter issuance workflows through controlled interfaces, rather than through direct write access. Where an AI System is given the ability to take actions (retrieve documents, update records, advance a workflow), the action set should be minimal and logged.
 
 Access to the AI System itself, including its prompts, configuration and retrieval corpus should be controlled: these artifacts determine validation behavior, and their unauthorized modification is an integrity event. Training and continuous-learning data should be secured against tampering by both insiders and external actors.
 
