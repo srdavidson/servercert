@@ -4405,7 +4405,7 @@ The disclosure made under [Section 2.2](#22-publication-of-information) gives au
 
 ### C.11.2. Incident reporting
 
-Where an AI System contributed to a misissuance or other reportable failure, the community's established expectations for incident reports apply. The root cause analysis should identify the AI System and the model version in effect (see Section C.6), the inputs and configuration involved, what human review was performed and why it did not catch the failure, and whether a model change, data drift, or an adversarial input was a factor (see Sections C.7 and C.8). Remediation should address the control gap, not only the individual error: an AI-attributable failure in one validation is evidence about every validation performed under the same configuration, and the affected-scope analysis should use the change log of Section C.7.3 to bound the exposure window.
+Where an AI System contributed to a misissuance or other reportable failure, the community's established expectations for incident reports apply. The root cause analysis should identify the AI System, the inputs and configuration involved, what human review was performed and why it did not catch the failure, and whether a model change, data drift, or an adversarial input was a factor (see Sections C.7 and C.8). Remediation should address the control gap, not only the individual error: an AI-attributable failure in one validation is evidence about every validation performed under the same configuration, and the affected-scope analysis should use the change log of Section C.7.3 to bound the exposure window.
 
 ### C.11.3. Self-audit
 
