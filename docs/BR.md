@@ -4360,9 +4360,12 @@ Access to the AI System itself, including its prompts, configuration and retriev
 
 These Requirements define a Delegated Third Party by function: a party, other than the CA and outside the scope of the CA's audits, authorized to assist in the Certificate Management Process by performing or fulfilling one or more of the CA's requirements. Whether an external AI provider is a Delegated Third Party therefore turns on what the provider is relied upon to do, not on the commercial label of the arrangement.
 
-A useful distinction is between supplying a tool and performing a requirement. A provider whose model the CA operates within its own workflow, with the CA's personnel exercising the judgment a requirement calls for, is supplying a tool, as a database vendor or an optical character recognition vendor does. A provider whose service receives the evidence and returns the determination, with the CA relying on that determination, is closer to performing the requirement, and the Delegated Third Party framework, including its audit and oversight obligations, may be relevant. Configurations between these poles should be analyzed against the reliance test of [Section C.4](#c4-reliance-and-human-oversight): the more the CA relies on the external service's judgment, and the less its own personnel could or do re-perform, the stronger the Delegated Third Party analysis becomes.
+A useful distinction is between supplying a tool and performing a requirement:
 
-CAs should note that these Requirements already prohibit delegation of certain functions, in particular the validation of domain authorization or control under [Section 1.3.2](#132-registration-authorities). A CA considering an external AI service anywhere near those functions should confirm that the arrangement does not amount to delegation of a non-delegable step. 
+-  A provider whose model the CA operates within its own workflow, with the CA's personnel exercising the judgment a requirement calls for, is supplying a tool, as a database vendor or an optical character recognition vendor does. 
+-  A provider whose service receives the evidence and returns the determination, with the CA relying on that determination, is closer to performing the requirement, and the Delegated Third Party framework, including its audit and oversight obligations, may be relevant. 
+
+Configurations between these poles should be analyzed against the reliance test of [Section C.4](#c4-reliance-and-human-oversight): the more the CA relies on the external service's judgment, and the less its own personnel could or do re-perform, the stronger the Delegated Third Party analysis becomes. CAs should note that these Requirements already prohibit delegation of certain functions. A CA considering an external AI service anywhere near those functions should confirm that the arrangement does not amount to delegation of a non-delegable step. 
 
 ### C.9.2. Vendor management
 
