@@ -4174,21 +4174,13 @@ This appendix defines permissible verification procedures for including one or m
 
 This Appendix provides guidance for CAs that use, or are considering the use of, AI Systems in performing the information verification activities described in [Section 3.2](#32-initial-identity-validation), [Section 4.1](#41-certificate-application), and [Section 4.2](#42-certificate-application-processing). It is intended as a common reference point for CAs, auditors, and root programs while practice in this area matures.
 
-The normative obligations relevant to AI Systems are limited to those stated in the body of these Requirements, including the disclosure obligation in [Section 2.2](#22-publication-of-information). Nothing in this Appendix authorizes, prohibits, or conditions any particular use of an AI System. Equally, a CA should not treat the absence of a prohibition, in this Appendix or elsewhere, as an endorsement of any practice. A CA remains responsible for the accuracy of all information verification performed in whole or in part by an AI System, to the same extent as if that verification had been performed by the CA's own personnel.
-
-Because the technology and the surrounding assurance frameworks are evolving rapidly, this Appendix is expected to be revised more frequently than the normative text of these Requirements.
+The normative obligations relevant to AI Systems are limited to those stated in the body of these Requirements, including the disclosure obligation in [Section 2.2](#22-publication-of-information). Nothing in this Appendix authorizes, prohibits, or conditions any particular use of an AI System. A CA remains responsible for the accuracy of all information verification performed in whole or in part by an AI System, to the same extent as if that verification had been performed by the CA's own personnel.
 
 ## C.2. Scope and Boundary
 
-### C.2.1. The definitional boundary
+### C.2.1. Definition
 
-An AI System, as defined in [Section 1.6.1](#161-definitions), performs a function by means of a trained model rather than exclusively by explicitly programmed rules, such that its behavior for a given input cannot be exhaustively specified or tested in advance. The definition is functional rather than architectural: it turns on whether the system's behavior can be fully specified and verified before deployment, not on the vendor's description of the product or the novelty of the technique.
-
-Deterministic automation, however sophisticated, is outside the definition. A DNS lookup, an ACME implementation, a CAA processing engine, a certificate linter, and a rules-based risk scoring system applying fixed criteria each perform the same check in the same way every time, can be tested exhaustively against their specification, and fail in legible ways. These systems are longstanding, are in many cases effectively required by these Requirements, and are not the subject of this Appendix.
-
-### C.2.2. Worked examples
-
-The following illustrate each side of the boundary.
+An AI System, as defined in [Section 1.6.1](#161-definitions), performs a function by means of a trained model rather than exclusively by explicitly programmed rules, such that its behavior for a given input cannot be exhaustively specified or tested in advance. Deterministic automation, however sophisticated, is outside the definition. A DNS lookup, an ACME implementation, a CAA processing engine, a certificate linter, and a rules-based risk scoring system applying fixed criteria each perform the same check in the same way every time, can be tested exhaustively against their specification, and fail in legible ways. These systems are longstanding, are in many cases effectively required by these Requirements, and are not the subject of this Appendix. The following examples illustrate each side of the boundary.
 
 Not AI Systems:
 
@@ -4205,7 +4197,7 @@ AI Systems:
 - A generative or large language model based system that summarizes evidence, drafts a validation determination, matches name variants, or translates a foreign-language document relied upon as evidence.
 - An agentic system that chains retrieval, extraction, and corroboration steps across multiple sources to assemble a validation file.
 
-### C.2.3. Edge cases
+### C.2.2. Edge cases
 
 Some configurations require closer reasoning. The organizing principle is that classification follows what the CA relies upon, not what the tool is called.
 
