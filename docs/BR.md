@@ -4201,19 +4201,19 @@ AI Systems:
 
 Some configurations require closer reasoning. The organizing principle is that classification follows what the CA relies upon, not what the tool is called.
 
-1. **Verified transcription**: Where a model-based component produces an intermediate rendering (a transcription, an extraction, a translation) and a Validation Specialist verifies that rendering in full against the authoritative source before reliance, the component is operating as a transcription step and the arrangement sits outside the concerns of this Appendix. The moment verification becomes partial or sampled, the CA is relying on the model, and the guidance in Sections C.4 through C.7 applies.
+- **Verified transcription**: Where a model-based component produces an intermediate rendering (a transcription, an extraction, a translation) and a Validation Specialist verifies that rendering in full against the authoritative source before reliance, the component is operating as a transcription step and the arrangement sits outside the concerns of this Appendix. The moment verification becomes partial or sampled, the CA is relying on the model, and the guidance in Sections C.4 through C.7 applies.
 
-1. **Models embedded in vendor products**: A data aggregator, a registry interface, or a source relied upon under these Requirements or under the EV Guidelines may use models internally without disclosing that fact. The CA's obligations attach at the point of reliance: if the CA relies on the vendor's output as evidence, the considerations in Section C.5 (provenance) and Section C.9 (third parties) apply regardless of the vendor's internal architecture. A CA is not expected to audit the internal implementation of every data source, but it should understand, through its vendor management process, whether the outputs it treats as evidence are records of an authoritative source or model-generated derivations of one.
+- **Models embedded in vendor products**: A data aggregator, a registry interface, or a source relied upon under these Requirements or under the EV Guidelines may use models internally without disclosing that fact. The CA's obligations attach at the point of reliance: if the CA relies on the vendor's output as evidence, the considerations in [Section C.5](#c5-evidence-provenance-and-data-sources) (provenance) and [Section C.9](#c9-third-parties-and-externally-hosted-models) (third parties) apply regardless of the vendor's internal architecture. A CA is not expected to audit the internal implementation of every data source, but it should understand, through its vendor management process, whether the outputs it treats as evidence are records of an authoritative source or model-generated derivations of one.
 
-1. **Rules engines with learned parameters**: A scoring system whose criteria were originally derived using statistical or machine learning techniques, but which now applies those criteria as fixed, inspectable rules that do not change except through the CA's own change management, behaves as deterministic automation. A system whose parameters continue to update through learning in production is an AI System.
+- **Rules engines with learned parameters**: A scoring system whose criteria were originally derived using statistical or machine learning techniques, but which now applies those criteria as fixed, inspectable rules that do not change except through the CA's own change management, behaves as deterministic automation. A system whose parameters continue to update through learning in production is an AI System.
 
-1. **Agentic compositions**: Where a system chains multiple capabilities, it should be classified and governed according to the most consequential role it performs in the workflow (see Section C.3). A pipeline that gathers, extracts, corroborates, and then recommends approval should be treated under the decision support role at minimum, even though its individual components perform lower-risk roles.
+- **Agentic compositions**: Where a system chains multiple capabilities, it should be classified and governed according to the most consequential role it performs in the workflow (see [Section C.3](#c3-roles-of-ai-systems-in-validation-workflows)). A pipeline that gathers, extracts, corroborates, and then recommends approval should be treated under the decision support role at minimum, even though its individual components perform lower-risk roles.
 
 ## C.3. Roles of AI Systems in Validation Workflows
 
 AI Systems can participate in validation in distinct roles that carry very different risk profiles. The taxonomy below, ordered from lower to higher risk to the ecosystem, is the vocabulary used by the disclosure obligation in [Section 2.2](#22-publication-of-information) and throughout this Appendix.
 
-1. **Role 1: Evidence gathering**: Locating and retrieving source material: registry records, government filings, data source records, documents from the Applicant, and open-source information. The characteristic failure modes are retrieval of the wrong artifact (a similarly named entity, a stale filing) and fabricated or misattributed sources. The principal mitigations are preserving the retrieved artifact and its origin in the validation record (see Section C.5) and verifying that the artifact actually pertains to the Applicant before reliance.
+1. **Role 1: Evidence gathering**: Locating and retrieving source material: registry records, government filings, data source records, documents from the Applicant, and open-source information. The characteristic failure modes are retrieval of the wrong artifact (a similarly named entity, a stale filing) and fabricated or misattributed sources. The principal mitigations are preserving the retrieved artifact and its origin in the validation record (see [Section C.5](#c5-evidence-provenance-and-data-sources)) and verifying that the artifact actually pertains to the Applicant before reliance.
 
 1. **Role 2: Interpretation and extraction**: Reading and structuring evidence: extracting an entity name and registration number from a formation document, matching name variants, translating foreign-language documents. The characteristic failure mode is plausible misreading: output that is fluent, well-formed, and wrong. Mitigations include retaining the source alongside the rendering, field-level verification proportionate to reliance, and adversarial testing with documents designed to be misread.
 
@@ -4221,7 +4221,7 @@ AI Systems can participate in validation in distinct roles that carry very diffe
 
 1. **Role 4: Quality control**: Reviewing completed validations, whether performed by humans or by systems, for errors, omissions, and anomalies, before or after issuance. This role is the least controversial entry point, because it layers over existing controls and an AI failure does not degrade the status quo: the validation stands or falls on the controls that produced it. The residual risks are false assurance, if the CA begins treating AI review as a substitute for existing controls rather than an addition, and completeness, since the CA cannot easily verify what the reviewer failed to flag.
 
-1. **Role 5: Decision support**: Producing a recommendation, risk score, or draft determination for a Validation Specialist who makes the decision. The dominant risk is automation bias: the human accepting fluent output without genuine, independent judgment, converting nominal decision support into de facto approval. Section C.4 addresses this directly.
+1. **Role 5: Decision support**: Producing a recommendation, risk score, or draft determination for a Validation Specialist who makes the decision. The dominant risk is automation bias: the human accepting fluent output without genuine, independent judgment, converting nominal decision support into de facto approval. [Section C.4](#c4-reliance-and-human-oversight) addresses this directly.
 
 1. **Role 6: Approval**: The AI System makes the approval or rejection decision for a validation element or for the certificate request as a whole, whether on a primary basis or as the second review in a four-eyes arrangement. This role concentrates risk: a failure is a misissuance pathway with no human between the model and the Certificate. An AI System serving as the second pair of eyes in a four-eyes control also changes the character of that control, since the independence and skepticism the control assumes may not hold.
 
@@ -4249,7 +4249,7 @@ Re-performability means the Validation Specialist retains the competence, the ac
 
 Where review is performed on a sample, the CA should be able to explain its sample design: the sampling rate and its rationale, strategy across risk-relevant dimensions (document types, jurisdictions, languages, request characteristics), the escalation path when the sample surfaces an error, and the criteria under which an error in the sample triggers a broader review.
 
-Sampling has structural limits in this domain. Validation errors of consequence can be low frequency and adversarially induced: an attacker aims to produce exactly the inputs on which the model fails. A sampling regime tuned to detect a baseline error rate may be ineffective against targeted abuse. CAs should pair sampled review with the adversarial testing described in Section C.7 and the input-security measures described in Section C.8, rather than treating sampling as sufficient on its own.
+Sampling has structural limits in this domain. Validation errors of consequence can be low frequency and adversarially induced: an attacker aims to produce exactly the inputs on which the model fails. A sampling regime tuned to detect a baseline error rate may be ineffective against targeted abuse. CAs should pair sampled review with the adversarial testing described in [Section C.7](#c7-testing-monitoring-and-change-management) and the input-security measures described in [Section C.8](#c8-security-considerations), rather than treating sampling as sufficient on its own.
 
 ### C.4.4. Automation bias
 
@@ -4276,7 +4276,7 @@ This principle holds regardless of how capable the model is. A model's recall of
 
 Designs in which the AI System retrieves records from authoritative sources and reasons over them are consistent with this principle, provided the retrieval is preserved. For each artifact relied upon, the validation record should capture the artifact itself (or an immutable copy), the source from which it was retrieved, and the time of retrieval. Where the system summarizes or synthesizes across retrieved artifacts, the artifacts remain the evidence and the synthesis is working material.
 
-A retrieval design in which the retrieved content is discarded and only the model's conclusion is retained defeats the purpose: it leaves the CA with AI Output in place of evidence and makes the decision unreconstructable (see Section C.6).
+A retrieval design in which the retrieved content is discarded and only the model's conclusion is retained defeats the purpose: it leaves the CA with AI Output in place of evidence and makes the decision unreconstructable (see [Section C.6](#c6-records-and-reconstructability)).
 
 ### C.5.3. Translations, extractions, and renderings
 
@@ -4284,7 +4284,7 @@ Where an AI System translates a foreign-language document, extracts structured f
 
 ### C.5.4. Sources that use AI internally
 
-As noted in Section C.2.3, a data source may itself use models internally. The provenance principle gives the CA a workable test: the question to put to such a vendor is whether the output the CA receives is a record of an authoritative source, traceable to it, or a model-generated derivation. Vendor management (see Section C.9) should seek that answer, and where the answer is uncertain, the CA should treat the output with the caution this Appendix applies to AI Output generally.
+As noted in [Section C.2.3]([#533](https://github.com/cabforum/servercert/issues/533)), a data source may itself use models internally. The question to put to vendors is whether the output the CA receives is a record of an authoritative source, traceable to it, or a model-generated derivation. Vendor management (see [Section C.9](#c9-third-parties-and-externally-hosted-models)) should seek that answer, and where the answer is uncertain, the CA should treat the output with the caution this Appendix applies to AI Output generally.
 
 ## C.6. Records and Reconstructability
 
@@ -4296,7 +4296,7 @@ The test a CA should apply to its own records is a practical one: could a qualif
 
 ### C.6.2. Suggested record contents
 
-Where an AI System contributed to a validation, the record should capture, in addition to the evidence itself (see Section C.5):
+Where an AI System contributed to a validation, the record should capture, in addition to the evidence itself (see [Section C.5](#c5-evidence-provenance-and-data-sources)):
 
 1. identification of the AI System, including the model and version, or an equivalent identifier sufficient to establish which system behavior was in effect;
 2. the inputs provided to the system, or a reliable means of reproducing them, including the documents or records processed;
@@ -4315,13 +4315,13 @@ These records are documentation supporting the verification of information and s
 
 ### C.7.1. Pre-deployment testing
 
-Before relying on an AI System in validation, a CA should test it against a representative corpus reflecting the diversity of its real workload: document types, jurisdictions, languages, scripts, and request patterns. Testing should include adversarial cases: documents crafted to be misread, near-miss entity names, forged or altered artifacts, and inputs containing embedded instructions (see Section C.8). The CA should document the intended use, the tested scope, the measured error characteristics, and the known limitations, and should confine production reliance to the tested scope.
+Before relying on an AI System in validation, a CA should test it against a representative corpus reflecting the diversity of its real workload: document types, jurisdictions, languages, scripts, and request patterns. Testing should include adversarial cases: documents crafted to be misread, near-miss entity names, forged or altered artifacts, and inputs containing embedded instructions (see [Section C.8](#c8-security-considerations)). The CA should document the intended use, the tested scope, the measured error characteristics, and the known limitations, and should confine production reliance to the tested scope.
 
-Testing should be designed and evaluated by personnel with the competence described in Section C.10, and by testers diverse enough in perspective to probe the system beyond its intended path.
+Testing should be designed and evaluated by personnel with the competence described in [Section C.10](#c10-governance-and-competence), and by testers diverse enough in perspective to probe the system beyond its intended path.
 
 ### C.7.2. Monitoring in production
 
-A CA should monitor, at minimum: error and override rates from human review (see Section C.4); drift indicators (meaning changes over time in the distribution of inputs or in the system's behavior on stable benchmark inputs); and anomalies suggesting targeted probing of the system by adversaries. Monitoring thresholds should connect to defined responses: increased review sampling, suspension of the AI System's role, or reversion to the manual process.
+A CA should monitor, at minimum: error and override rates from human review (see [Section C.4](#c4-reliance-and-human-oversight)); drift indicators (meaning changes over time in the distribution of inputs or in the system's behavior on stable benchmark inputs); and anomalies suggesting targeted probing of the system by adversaries. Monitoring thresholds should connect to defined responses: increased review sampling, suspension of the AI System's role, or reversion to the manual process.
 
 Data-related risks apply directly: training data that is insufficient, outdated, or unrepresentative of the CA's workload; data poisoning; and drift in retrieval corpus that silently changes what the system reads.
 
@@ -4330,11 +4330,11 @@ Data-related risks apply directly: training data that is insufficient, outdated,
 A defining operational property of hosted AI services is that the model can change outside the CA's own change management. A provider-initiated model update is a change to a validation control and should be treated as such. Practices that restore the CA's control include:
 
 - version pinning where the provider offers it, with upgrades performed as deliberate, tested changes;
-- where pinning is unavailable, contractual notification of model changes (see Section C.9) combined with scheduled re-testing against the benchmark corpus;
-- a documented change log correlating model versions or change dates with the validation records of Section C.6, so that an error discovered later can be scoped to the affected period; and
+- where pinning is unavailable, contractual notification of model changes (see [Section C.9](#c9-third-parties-and-externally-hosted-models)) combined with scheduled re-testing against the benchmark corpus;
+- a documented change log correlating model versions or change dates with the validation records of [Section C.6](#c6-records-and-reconstructability), so that an error discovered later can be scoped to the affected period; and
 - a rollback path: the ability to revert to a prior version or to the manual process without interrupting the CA's ability to meet its validation obligations.
 
-Continuous-learning configurations, in which the model's behavior changes in production as a function of what it processes, resist change management entirely and are difficult to reconcile with the reconstructability objective of Section C.6. A CA should approach such configurations with corresponding caution.
+Continuous-learning configurations, in which the model's behavior changes in production as a function of what it processes, resist change management entirely and are difficult to reconcile with the reconstructability objective of [Section C.6](#c6-records-and-reconstructability). A CA should approach such configurations with corresponding caution.
 
 ## C.8. Security Considerations
 
@@ -4346,7 +4346,7 @@ Validation systems consume attacker-influenced inputs by design. The Applicant s
 
 Content embedded in a processed document, a retrieved web page, or any other input can function as instructions to a generative system: directing it to report a particular entity name, to suppress a discrepancy, or to classify a request as low risk. The injected content need not be visible to a human reviewer; it can be encoded in document structure, metadata, or styling.
 
-Mitigations include: architectural separation between instructions and data, so that processed content is consumed as data and cannot alter the system's task; constraining outputs to structured formats validated by deterministic code before use; stripping or neutralizing active content and metadata from inputs where feasible; treating all retrieved and Applicant-supplied content as untrusted regardless of source; and including injection attempts in the adversarial test corpus of Section C.7. A CA should assume that injection defenses are imperfect and should position human review and provenance controls (see Sections C.4 and C.5) to catch what input filtering misses.
+Mitigations include: architectural separation between instructions and data, so that processed content is consumed as data and cannot alter the system's task; constraining outputs to structured formats validated by deterministic code before use; stripping or neutralizing active content and metadata from inputs where feasible; treating all retrieved and Applicant-supplied content as untrusted regardless of source; and including injection attempts in the adversarial test corpus of [Section C.7](#c7-testing-monitoring-and-change-management). A CA should assume that injection defenses are imperfect and should position human review and provenance controls (see [Section C.4](#c4-reliance-and-human-oversight) and [Section C.5](#c5-evidence-provenance-and-data-sources)) to catch what input filtering misses.
 
 ### C.8.3. System separation and access
 
@@ -4360,7 +4360,7 @@ Access to the AI System itself, including its prompts, configuration, retrieval 
 
 These Requirements define a Delegated Third Party by function: a party, other than the CA and outside the scope of the CA's audits, authorized to assist in the Certificate Management Process by performing or fulfilling one or more of the CA's requirements. Whether an external AI provider is a Delegated Third Party therefore turns on what the provider is relied upon to do, not on the commercial label of the arrangement.
 
-A useful distinction is between supplying a tool and performing a requirement. A provider whose model the CA operates within its own workflow, with the CA's personnel exercising the judgment a requirement calls for, is supplying a tool, as a database vendor or an optical character recognition vendor does. A provider whose service receives the evidence and returns the determination, with the CA relying on that determination, is closer to performing the requirement, and the Delegated Third Party framework, including its audit and oversight obligations, may be relevant. Configurations between these poles should be analyzed against the reliance test of Section C.4: the more the CA relies on the external service's judgment, and the less its own personnel could or do re-perform, the stronger the Delegated Third Party analysis becomes.
+A useful distinction is between supplying a tool and performing a requirement. A provider whose model the CA operates within its own workflow, with the CA's personnel exercising the judgment a requirement calls for, is supplying a tool, as a database vendor or an optical character recognition vendor does. A provider whose service receives the evidence and returns the determination, with the CA relying on that determination, is closer to performing the requirement, and the Delegated Third Party framework, including its audit and oversight obligations, may be relevant. Configurations between these poles should be analyzed against the reliance test of [Section C.4](#c4-reliance-and-human-oversight): the more the CA relies on the external service's judgment, and the less its own personnel could or do re-perform, the stronger the Delegated Third Party analysis becomes.
 
 CAs should note that these Requirements already prohibit delegation of certain functions, in particular the validation of domain authorization or control under [Section 1.3.2](#132-registration-authorities). A CA considering an external AI service anywhere near those functions should confirm that the arrangement does not amount to delegation of a non-delegable step. 
 
@@ -4368,12 +4368,12 @@ CAs should note that these Requirements already prohibit delegation of certain f
 
 Whether or not a provider is a Delegated Third Party, a CA relying on an external AI service in validation should extend its vendor management program to cover, at minimum:
 
-- contractual terms governing the service's use in the CA's context, including model change notification (see Section C.7.3), availability commitments consistent with the CA's issuance obligations, and incident notification;
+- contractual terms governing the service's use in the CA's context, including model change notification (see [Section C.7.3](#c73-change-management-for-models-outside-the-cas-control)), availability commitments consistent with the CA's issuance obligations, and incident notification;
 - data handling: where Applicant data and evidence are processed and stored, who can access them, and whether the CA's data may be used to train or improve the provider's models, which a CA should generally preclude for validation data;
 - assurance reporting: SOC 2 or equivalent reports, reviewed with attention to how the provider's report treats its AI components, noting that under AICPA Q&A Section 9561, AI use at a subservice organization is presumptively relevant and complementary user entity controls may be stated that the CA is assumed to operate; and
 - the provider's own supply chain, including foundation models the service depends on, to the extent the provider can meaningfully attest to it.
 
-The CA's risk assessment should identify where a vendor's AI affects the CA's own validation objectives, including vendors not procured as AI products but embedding models in relevant functions (see Section C.2.3).
+The CA's risk assessment should identify where a vendor's AI affects the CA's own validation objectives, including vendors not procured as AI products but embedding models in relevant functions (see [Section C.2.2](#c22-edge-cases)).
 
 ### C.9.3. Confidentiality
 
@@ -4387,27 +4387,27 @@ Effective governance begins with knowing where AI is actually in use. A CA shoul
 
 ### C.10.2. Accountability
 
-Responsibility for the use of AI Systems in validation should be assigned to a specific role or body, with authority over approval of new uses, the policy framework below, and the monitoring outputs of Section C.7. Diffuse responsibility is a known failure pattern for cross-cutting technologies: when AI governance belongs to everyone, drift, shadow deployment, and unowned incidents follow.
+Responsibility for the use of AI Systems in validation should be assigned to a specific role or body, with authority over approval of new uses, the policy framework below, and the monitoring outputs of [Section C.7](#c7-testing-monitoring-and-change-management). Diffuse responsibility is a known failure pattern for cross-cutting technologies: when AI governance belongs to everyone, drift, shadow deployment, and unowned incidents follow.
 
 ### C.10.3. Competence
 
-Those who deploy, oversee, and review AI Systems should collectively hold the competence to do so: an understanding of the core concepts and failure modes described in this Appendix (non-determinism, hallucination, drift, bias including automation bias, injection), of data quality and provenance, of the governance frameworks applicable to the CA, and of the evolving regulatory environment. Validation Specialists whose duties involve reviewing AI Output should receive training specific to that review (see Section C.4.5).
+Those who deploy, oversee, and review AI Systems should collectively hold the competence to do so: an understanding of the core concepts and failure modes described in this Appendix (non-determinism, hallucination, drift, bias including automation bias, injection), of data quality and provenance, of the governance frameworks applicable to the CA, and of the evolving regulatory environment. Validation Specialists whose duties involve reviewing AI Output should receive training specific to that review (see [Section C.4.5](#c45-the-validation-specialist)).
 
 ### C.10.4. Policy framework
 
-A CA using AI Systems in validation should maintain a policy framework addressing: permitted and prohibited uses; the approval path for new uses and for role changes under Section C.3; the review and reliance rules of Section C.4; records, testing, and change management per Sections C.6 and C.7; and periodic review of the framework itself. The framework should be proportionate to the complexity and extent of the CA's AI use.
+A CA using AI Systems in validation should maintain a policy framework addressing: permitted and prohibited uses; the approval path for new uses and for role changes under [Section C.3](#c3-roles-of-ai-systems-in-validation-workflows); the review and reliance rules of [Section C.4](#c4-reliance-and-human-oversight); records, testing, and change management per [Section C.6](#c6-records-and-reconstructability) and [Section C.7](#c7-testing-monitoring-and-change-management); and periodic review of the framework itself. The framework should be proportionate to the complexity and extent of the CA's AI use.
 
 ## C.11. Relationship to Audits and Incident Reporting
 
 ### C.11.1. Audits
 
-The disclosure made under [Section 2.2](#22-publication-of-information) gives auditors a map: which roles AI Systems play, whether review is full or sampled, and whether systems are CA-operated or external. Auditors can be expected to trace from that disclosure to the corresponding controls: the review and reliance controls of Section C.4, the records of Section C.6, the testing and change management of Section C.7, the security measures of Section C.8, and the vendor controls of Section C.9.
+The disclosure made under [Section 2.2](#22-publication-of-information) gives auditors a map: which roles AI Systems play, whether review is full or sampled, and whether systems are CA-operated or external. Auditors can be expected to trace from that disclosure to the corresponding controls: the review and reliance controls of [Section C.4](#c4-reliance-and-human-oversight), the records of [Section C.6](#c6-records-and-reconstructability), the testing and change management of [Section C.7](#c7-testing-monitoring-and-change-management), the security measures of [Section C.8](#c8-security-considerations), and the vendor controls of [Section C.9](#c9-third-parties-and-externally-hosted-models).
 
 ### C.11.2. Incident reporting
 
-Where an AI System contributed to a misissuance or other reportable failure, the community's established expectations for incident reports apply. The root cause analysis should identify the AI System, the inputs and configuration involved, what human review was performed and why it did not catch the failure, and whether a model change, data drift, or an adversarial input was a factor (see Sections C.7 and C.8). Remediation should address the control gap, not only the individual error: an AI-attributable failure in one validation is evidence about every validation performed under the same configuration, and the affected-scope analysis should use the change log of Section C.7.3 to bound the exposure window.
+Where an AI System contributed to a misissuance or other reportable failure, the community's established expectations for incident reports apply. The root cause analysis should identify the AI System, the inputs and configuration involved, what human review was performed and why it did not catch the failure, and whether a model change, data drift, or an adversarial input was a factor (see [Section C.7](#c7-testing-monitoring-and-change-management) and [Section C.8](#c8-security-considerations)). Remediation should address the control gap, not only the individual error: an AI-attributable failure in one validation is evidence about every validation performed under the same configuration, and the affected-scope analysis should use the change log of [Section C.7.3](#c73-change-management-for-models-outside-the-cas-control) to bound the exposure window.
 
 ### C.11.3. Self-audit
 
-[Section 8.7](#87-self-audits) requires the CA to perform a self-audit over a sample of issued Certificates. Two implications follow. First, where AI Systems participated in validation, the self-audit sample should represent AI-involved validations so that the self-audit exercises the records of Section C.6 and tests whether decisions can in fact be reconstructed. Second, AI Systems in the quality control role (Section C.3, Role 4) may enable a CA to review coverage well beyond the minimum sample; such expanded review is an addition to, not a substitute for, the [Section 8.7](#87-self-audits) obligation as written.
+[Section 8.7](#87-self-audits) requires the CA to perform a self-audit over a sample of issued Certificates. Two implications follow. First, where AI Systems participated in validation, the self-audit sample should represent AI-involved validations so that the self-audit exercises the records of [Section C.6](#c6-records-and-reconstructability) and tests whether decisions can in fact be reconstructed. Second, AI Systems in the quality control role ([Section C.3, Role 4](#c3-roles-of-ai-systems-in-validation-workflows)) may enable a CA to review coverage well beyond the minimum sample; such expanded review is an addition to, not a substitute for, the [Section 8.7](#87-self-audits) obligation as written.
 
