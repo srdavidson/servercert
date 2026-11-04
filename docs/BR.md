@@ -4172,7 +4172,7 @@ This appendix defines permissible verification procedures for including one or m
 
 ## C.1. Purpose and Status
 
-This Appendix provides guidance for CAs that use, or are considering the use of, AI Systems in performing the information verification activities described in [Section 3.2](#32-initial-identity-validation), [Section 4.1](#41-certificate-application), and [Section 4.2](#42-certificate-application-processing). It is intended as a common reference point for CAs, auditors, and root programs while practice in this area matures.
+This Appendix provides guidance for CAs that use AI Systems in performing the information verification activities described in [Section 3.2](#32-initial-identity-validation), [Section 4.1](#41-certificate-application), and [Section 4.2](#42-certificate-application-processing). It is intended as a common reference point for CAs, auditors, and Application Software Suppliers while practice in this area matures.
 
 The normative obligations relevant to AI Systems are limited to those stated in the body of these Requirements, including the disclosure obligation in [Section 2.2](#22-publication-of-information). Nothing in this Appendix authorizes, prohibits, or conditions any particular use of an AI System. A CA remains responsible for the accuracy of all information verification performed in whole or in part by an AI System, to the same extent as if that verification had been performed by the CA's own personnel.
 
@@ -4231,7 +4231,7 @@ A single deployment may span several roles. The governing considerations are tho
 
 ### C.4.1. The reliance test
 
-The central question for any AI System in validation is not what the system does but what the CA relies upon it to do. This Appendix adopts a reliance framing consistent with AICPA Q&A Section 9561, which addresses AI in SOC examinations and which WebTrust practitioners can be expected to consult.
+The central question for any AI System in validation is what the CA relies upon it to do. This Appendix adopts a reliance framing consistent with AICPA Q&A Section 9561, which addresses AI in SOC examinations and which WebTrust practitioners can be expected to consult.
 
 An AI System is operating as an efficiency aid when a Validation Specialist fully reviews and, where necessary, corrects its output before any reliance is placed on it, and when the Validation Specialist could reperform the task without the AI System, using sources outside it. In that configuration the human control is the control; the AI System accelerates work the human remains fully accountable for and capable of.
 
@@ -4298,9 +4298,9 @@ The test a CA should apply to its own records is a practical one: could a qualif
 
 Where an AI System contributed to a validation, the record should capture, in addition to the evidence itself (see Section C.5):
 
-1. identification of the AI System, including the model and version, or an equivalent identifier sufficient to establish which system behavior was in effect (where a provider does not expose version identifiers, the CA's own deployment identifier and the date, combined with the change log contemplated in Section C.7, serve this purpose);
+1. identification of the AI System, including the model and version, or an equivalent identifier sufficient to establish which system behavior was in effect;
 2. the inputs provided to the system, or a reliable means of reproducing them, including the documents or records processed;
-3. the configuration material that shaped the system's behavior, to the extent applicable: prompts or system instructions, retrieval corpus version, decision thresholds, and relevant parameter settings;
+3. the configuration material that shaped the system's behavior, to the extent applicable such as prompts or system instructions, decision thresholds, and relevant parameter settings;
 4. the AI Output relied upon, in the form in which it was relied upon;
 5. where a Validation Specialist reviewed or approved, the identity of that Validation Specialist, the nature of the review performed (full verification against evidence, sampled review, or acknowledgment), and the outcome, including any correction or override; and
 6. timestamps sufficient to sequence the above.
@@ -4317,11 +4317,11 @@ These records are documentation supporting the verification of information and s
 
 Before relying on an AI System in validation, a CA should test it against a representative corpus reflecting the diversity of its real workload: document types, jurisdictions, languages, scripts, and request patterns. Testing should include adversarial cases: documents crafted to be misread, near-miss entity names, forged or altered artifacts, and inputs containing embedded instructions (see Section C.8). The CA should document the intended use, the tested scope, the measured error characteristics, and the known limitations, and should confine production reliance to the tested scope.
 
-Testing should be designed and evaluated by personnel with the competence described in Section C.10, and, consistent with the expectations reflected in AICPA Q&A Section 9561, by testers diverse enough in perspective to probe the system beyond its intended path.
+Testing should be designed and evaluated by personnel with the competence described in Section C.10, and by testers diverse enough in perspective to probe the system beyond its intended path.
 
 ### C.7.2. Monitoring in production
 
-Deployment is the beginning of assurance, not the end. A CA should monitor, at minimum: error and override rates from human review (see Section C.4); drift indicators, meaning changes over time in the distribution of inputs or in the system's behavior on stable benchmark inputs; and anomalies suggesting targeted probing of the system by adversaries. Monitoring thresholds should connect to defined responses: increased review sampling, suspension of the AI System's role, or reversion to the manual process.
+Deployment is the beginning of assurance, not the end. A CA should monitor, at minimum: error and override rates from human review (see Section C.4); drift indicators (meaning changes over time in the distribution of inputs or in the system's behavior on stable benchmark inputs); and anomalies suggesting targeted probing of the system by adversaries. Monitoring thresholds should connect to defined responses: increased review sampling, suspension of the AI System's role, or reversion to the manual process.
 
 Data-related risks apply directly: training or fine-tuning data that is insufficient, outdated, or unrepresentative of the CA's workload; data poisoning; and drift in retrieval corpora that silently changes what the system reads.
 
@@ -4354,19 +4354,15 @@ An AI System that processes untrusted validation inputs should be separated from
 
 Access to the AI System itself, including its prompts, configuration, retrieval corpora, and any fine-tuning data, should be controlled as access to a certificate system component: these artifacts determine validation behavior, and their unauthorized modification is an integrity event. Training and continuous-learning data should be secured against tampering by both insiders and external actors.
 
-### C.8.4. Coordination with the NetSec Working Group
-
-Normative security requirements for AI components used in validation would naturally fall within the scope of the Network and Certificate System Security Requirements. This Appendix flags the topic for coordination with the NetSec Working Group rather than anticipating its conclusions. See Section C.12, item 6.
-
 ## C.9. Third Parties and Externally Hosted Models
 
 ### C.9.1. The Delegated Third Party question
 
 These Requirements define a Delegated Third Party by function: a party, other than the CA and outside the scope of the CA's audits, authorized to assist in the Certificate Management Process by performing or fulfilling one or more of the CA's requirements. Whether an external AI provider is a Delegated Third Party therefore turns on what the provider is relied upon to do, not on the commercial label of the arrangement.
 
-A useful distinction is between supplying a tool and performing a requirement. A provider whose model the CA operates within its own workflow, with the CA's personnel exercising the judgment a requirement calls for, is supplying a tool, as a database vendor or an optical character recognition vendor does. A provider whose service receives the evidence and returns the determination, with the CA relying on that determination, is closer to performing the requirement, and the Delegated Third Party framework, including its audit and oversight obligations, is the natural frame. Configurations between these poles should be analyzed against the reliance test of Section C.4: the more the CA relies on the external service's judgment, and the less its own personnel could or do reperform, the stronger the Delegated Third Party analysis becomes.
+A useful distinction is between supplying a tool and performing a requirement. A provider whose model the CA operates within its own workflow, with the CA's personnel exercising the judgment a requirement calls for, is supplying a tool, as a database vendor or an optical character recognition vendor does. A provider whose service receives the evidence and returns the determination, with the CA relying on that determination, is closer to performing the requirement, and the Delegated Third Party framework, including its audit and oversight obligations, may be relevant. Configurations between these poles should be analyzed against the reliance test of Section C.4: the more the CA relies on the external service's judgment, and the less its own personnel could or do reperform, the stronger the Delegated Third Party analysis becomes.
 
-CAs should note that these Requirements already prohibit delegation of certain functions, in particular the validation of domain authorization or control under [Section 1.3.2](#132-registration-authorities). A CA considering an external AI service anywhere near those functions should confirm that the arrangement does not amount to delegation of a non-delegable step. This is a priority area for normative clarification precisely because silence may already carry a de facto answer. See Section C.12, item 4.
+CAs should note that these Requirements already prohibit delegation of certain functions, in particular the validation of domain authorization or control under [Section 1.3.2](#132-registration-authorities). A CA considering an external AI service anywhere near those functions should confirm that the arrangement does not amount to delegation of a non-delegable step. 
 
 ### C.9.2. Vendor management
 
@@ -4395,7 +4391,7 @@ Responsibility for the use of AI Systems in validation should be assigned to a s
 
 ### C.10.3. Competence
 
-Those who deploy, oversee, and review AI Systems should collectively hold the competence to do so: an understanding of the core concepts and failure modes described in this Appendix (non-determinism, hallucination, drift, bias including automation bias, injection), of data quality and provenance, of the governance frameworks applicable to the CA, and of the evolving regulatory environment. A CA should not expect its auditor to be the most AI-literate party in the engagement. Validation Specialists whose duties involve reviewing AI Output should receive training specific to that review (see Section C.4.5).
+Those who deploy, oversee, and review AI Systems should collectively hold the competence to do so: an understanding of the core concepts and failure modes described in this Appendix (non-determinism, hallucination, drift, bias including automation bias, injection), of data quality and provenance, of the governance frameworks applicable to the CA, and of the evolving regulatory environment. Validation Specialists whose duties involve reviewing AI Output should receive training specific to that review (see Section C.4.5).
 
 ### C.10.4. Policy framework
 
@@ -4407,13 +4403,11 @@ A CA using AI Systems in validation should maintain a policy framework addressin
 
 The disclosure made under [Section 2.2](#22-publication-of-information) gives auditors a map: which roles AI Systems play, whether review is full or sampled, and whether systems are CA-operated or external. Auditors can be expected to trace from that disclosure to the corresponding controls: the review and reliance controls of Section C.4, the records of Section C.6, the testing and change management of Section C.7, the security measures of Section C.8, and the vendor controls of Section C.9.
 
-Current WebTrust and ETSI criteria do not yet contemplate model-based controls as such. AICPA Q&A Section 9561 establishes that in SOC examinations the existing control objectives and trust services criteria remain the basis of examination, with AI changing the likelihood and magnitude of risks rather than the objectives themselves; a parallel posture in the WebTrust for CAs and ETSI EN 319 411 contexts would preserve audit comparability. Coordination with the WebTrust Task Force and the ETSI and ACAB'c communities is anticipated so that audit criteria development tracks this Appendix rather than diverging from it. Until then, CAs should expect practitioner judgment to vary and should document their controls with that in mind.
-
 ### C.11.2. Incident reporting
 
-Where an AI System contributed to a misissuance or other reportable failure, the community's established expectations for incident reports apply with specific force. The root cause analysis should identify the AI System and the model version in effect (see Section C.6), the inputs and configuration involved, what human review was performed and why it did not catch the failure, and whether a model change, data drift, or an adversarial input was a factor (see Sections C.7 and C.8). Remediation should address the control gap, not only the individual error: an AI-attributable failure in one validation is evidence about every validation performed under the same configuration, and the affected-scope analysis should use the change log of Section C.7.3 to bound the exposure window.
+Where an AI System contributed to a misissuance or other reportable failure, the community's established expectations for incident reports apply. The root cause analysis should identify the AI System and the model version in effect (see Section C.6), the inputs and configuration involved, what human review was performed and why it did not catch the failure, and whether a model change, data drift, or an adversarial input was a factor (see Sections C.7 and C.8). Remediation should address the control gap, not only the individual error: an AI-attributable failure in one validation is evidence about every validation performed under the same configuration, and the affected-scope analysis should use the change log of Section C.7.3 to bound the exposure window.
 
 ### C.11.3. Self-audit
 
-[Section 8.7](#87-self-audits) requires the CA to perform a self-audit over a sample of issued Certificates. Two implications follow. First, where AI Systems participated in validation, the self-audit sample should represent AI-involved validations so that the self-audit exercises the records of Section C.6 and tests whether decisions can in fact be reconstructed. Second, AI Systems in the quality control role (Section C.3, Role 4) may enable a CA to review coverage well beyond the minimum sample; such expanded review is an addition to, not a substitute for, the [Section 8.7](#87-self-audits) obligation as written, and the question whether AI-performed work needs a self-audit counterpart of its own is flagged in Section C.12, item 7.
+[Section 8.7](#87-self-audits) requires the CA to perform a self-audit over a sample of issued Certificates. Two implications follow. First, where AI Systems participated in validation, the self-audit sample should represent AI-involved validations so that the self-audit exercises the records of Section C.6 and tests whether decisions can in fact be reconstructed. Second, AI Systems in the quality control role (Section C.3, Role 4) may enable a CA to review coverage well beyond the minimum sample; such expanded review is an addition to, not a substitute for, the [Section 8.7](#87-self-audits) obligation as written.
 
