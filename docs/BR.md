@@ -4274,9 +4274,7 @@ This principle holds regardless of how capable the model is. A model's recall of
 
 ### C.5.2. Retrieval-based designs
 
-Designs in which the AI System retrieves records from authoritative sources and reasons over them are consistent with this principle, provided the retrieval is preserved. For each artifact relied upon, the validation record should capture the artifact itself (or an immutable copy), the source from which it was retrieved, and the time of retrieval. Where the system summarizes or synthesizes across retrieved artifacts, the artifacts remain the evidence and the synthesis is working material.
-
-A retrieval design in which the retrieved content is discarded and only the model's conclusion is retained defeats the purpose: it leaves the CA with AI Output in place of evidence and makes the decision unreconstructable (see [Section C.6](#c6-records-and-reconstructability)).
+Designs in which the AI System retrieves records from authoritative sources and reasons over them are consistent with this principle, provided the retrieval is preserved. For each artifact relied upon, the validation record should capture the artifact itself (or an immutable copy), the source from which it was retrieved, and the time of retrieval. Where the system summarizes or synthesizes across multiple retrieved artifacts, the artifacts remain the evidence and the synthesis is working material (see [Section C.6](#c6-records-and-reconstructability)).
 
 ### C.5.3. Translations, extractions, and renderings
 
