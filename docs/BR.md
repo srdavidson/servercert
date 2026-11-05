@@ -4284,7 +4284,7 @@ Where an AI System translates a foreign-language document, extracts structured f
 
 ### C.5.4. Sources that use AI internally
 
-As noted in [Section C.2.3]([#533](https://github.com/cabforum/servercert/issues/533)), a data source may itself use models internally. The question to put to vendors is whether the output the CA receives is a record of an authoritative source, traceable to it, or a model-generated derivation. Vendor management (see [Section C.9](#c9-third-parties-and-externally-hosted-models)) should seek that answer, and where the answer is uncertain, the CA should treat the output with the caution this Appendix applies to AI Output generally.
+As noted in [Section C.2.2](#c22-edge-cases), a data source may itself use models internally. The question to put to vendors is whether the output the CA receives is a record of an authoritative source, traceable to it, or a model-generated derivation. Vendor management (see [Section C.9](#c9-third-parties-and-externally-hosted-models)) should seek that answer, and where the answer is uncertain, the CA should treat the output with the caution this Appendix applies to AI Output generally.
 
 ## C.6. Records and Reconstructability
 
